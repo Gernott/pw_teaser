@@ -4,6 +4,23 @@ Create powerful page teasers in TYPO3 CMS with data from page properties and its
 Based on Extbase and Fluid template engine.
 
 
+## Installation
+
+If you want to install this fork, add this to the composer.json of your project:
+```
+"repositories": [
+    { "type": "vcs", "url": "https://github.com/Gernott/pw_teaser" }
+]
+"require": {
+    "t3/pw_teaser": "dev-master"
+}
+```
+
+Then install it:
+```
+composer update
+```
+
 ## Features
 
 - Show lists of pages (like TYPO3's ``menu_pages`` or ``menu_subpages`` content element type)

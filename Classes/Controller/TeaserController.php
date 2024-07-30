@@ -96,7 +96,7 @@ class TeaserController extends ActionController
      *
      * @return void
      */
-    public function initializeAction()
+    public function initializeAction(): void
     {
         $this->settings = $this->settingsUtility->renderConfigurationArray($this->settings);
 
@@ -115,7 +115,7 @@ class TeaserController extends ActionController
      *
      * @return ResponseInterface|void
      */
-    public function indexAction()
+    public function indexAction(): \Psr\Http\Message\ResponseInterface
     {
         $this->currentPageUid = $GLOBALS['TSFE']->id;
 
@@ -203,6 +203,7 @@ class TeaserController extends ActionController
                 ->withAddedHeader('Content-Type', 'text/html; charset=utf-8')
                 ->withBody($this->streamFactory->createStream($this->view->render()));
         }
+        return $this->htmlResponse();
     }
 
     /**

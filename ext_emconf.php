@@ -11,7 +11,7 @@ $EM_CONF[$_EXTKEY] = [
     'author_company' => 'v.ieweg Webentwicklung',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.6-11.5.99',
+            'typo3' => '12.4.0-12.4.99',
         ],
         'conflicts' => [],
         'suggests' => [],

@@ -23,7 +23,7 @@ class ContentRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @return void
      */
-    public function initializeObject()
+    public function initializeObject(): void
     {
         $querySettings = $this->createQuery()->getQuerySettings();
         $querySettings->setRespectStoragePage(false);

@@ -47,8 +47,8 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * title
      *
      * @var string
-     * @TYPO3\CMS\Extbase\Annotation\Validate("NotEmpty")
      */
+    #[\TYPO3\CMS\Extbase\Annotation\Validate(['validator' => 'NotEmpty'])]
     protected $title;
 
     /**
@@ -217,7 +217,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      *
      * @return void
      */
-    public function setCustomAttribute($key, $value)
+    public function setCustomAttribute($key, $value): void
     {
         $this->customAttributes[$key] = $value;
     }
@@ -253,7 +253,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
     public function getGet(): array
     {
         if (empty($this->pageRow)) {
-            /** @var \TYPO3\CMS\Frontend\Page\PageRepository $pageSelect */
+            /** @var \TYPO3\CMS\Core\Domain\Repository\PageRepository $pageSelect */
             $pageSelect = $GLOBALS['TSFE']->sys_page;
             $pageRow = $pageSelect->getPage($this->getUid());
             foreach ($pageRow as $key => $value) {
@@ -294,7 +294,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param array <\PwTeaserTeam\PwTeaser\Domain\Model\Content> $contents array of contents
      * @return void
      */
-    public function setContents($contents)
+    public function setContents($contents): void
     {
         $this->contents = $contents;
     }
@@ -325,7 +325,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param boolean $isCurrentPage
      * @return void
      */
-    public function setIsCurrentPage($isCurrentPage)
+    public function setIsCurrentPage($isCurrentPage): void
     {
         $this->isCurrentPage = $isCurrentPage;
     }
@@ -336,7 +336,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $authorEmail authorEmail
      * @return void
      */
-    public function setAuthorEmail($authorEmail)
+    public function setAuthorEmail($authorEmail): void
     {
         $this->authorEmail = $authorEmail;
     }
@@ -357,7 +357,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $keywords keywords
      * @return void
      */
-    public function setKeywords($keywords)
+    public function setKeywords($keywords): void
     {
         $this->keywords = $keywords;
     }
@@ -388,7 +388,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $description description
      * @return void
      */
-    public function setDescription($description)
+    public function setDescription($description): void
     {
         $this->description = $description;
     }
@@ -409,7 +409,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $alias alias
      * @return void
      */
-    public function setAlias($alias)
+    public function setAlias($alias): void
     {
         $this->alias = $alias;
     }
@@ -430,7 +430,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $navTitle navTitle
      * @return void
      */
-    public function setNavTitle($navTitle)
+    public function setNavTitle($navTitle): void
     {
         $this->navTitle = $navTitle;
     }
@@ -451,7 +451,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $abstract abstract
      * @return void
      */
-    public function setAbstract($abstract)
+    public function setAbstract($abstract): void
     {
         $this->abstract = $abstract;
     }
@@ -472,7 +472,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $subtitle subtitle
      * @return void
      */
-    public function setSubtitle($subtitle)
+    public function setSubtitle($subtitle): void
     {
         $this->subtitle = $subtitle;
     }
@@ -493,7 +493,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $title title
      * @return void
      */
-    public function setTitle($title)
+    public function setTitle($title): void
     {
         $this->title = $title;
     }
@@ -514,7 +514,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage<\TYPO3\CMS\Extbase\Domain\Model\FileReference> $media
      * @return void
      */
-    public function setMedia(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $media)
+    public function setMedia(\TYPO3\CMS\Extbase\Persistence\ObjectStorage $media): void
     {
         $this->media = $media;
     }
@@ -535,7 +535,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $medium
      * @return void
      */
-    public function addMedium(\TYPO3\CMS\Extbase\Domain\Model\FileReference $medium)
+    public function addMedium(\TYPO3\CMS\Extbase\Domain\Model\FileReference $medium): void
     {
         $this->media->attach($medium);
     }
@@ -546,7 +546,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\FileReference $medium
      * @return void
      */
-    public function removeMedium(\TYPO3\CMS\Extbase\Domain\Model\FileReference $medium)
+    public function removeMedium(\TYPO3\CMS\Extbase\Domain\Model\FileReference $medium): void
     {
         $this->media->detach($medium);
     }
@@ -572,7 +572,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param integer $newUntil newUntil
      * @return void
      */
-    public function setNewUntil($newUntil)
+    public function setNewUntil($newUntil): void
     {
         $this->newUntil = $newUntil;
     }
@@ -606,7 +606,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param integer $creationDate creationDate
      * @return void
      */
-    public function setCreationDate($creationDate)
+    public function setCreationDate($creationDate): void
     {
         $this->creationDate = $creationDate;
     }
@@ -627,7 +627,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param integer $tstamp tstamp
      * @return void
      */
-    public function setTstamp($tstamp)
+    public function setTstamp($tstamp): void
     {
         $this->tstamp = $tstamp;
     }
@@ -648,7 +648,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param integer $lastUpdated lastUpdated
      * @return void
      */
-    public function setLastUpdated($lastUpdated)
+    public function setLastUpdated($lastUpdated): void
     {
         $this->lastUpdated = $lastUpdated;
     }
@@ -669,7 +669,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param integer $starttime
      * @return void
      */
-    public function setStarttime($starttime)
+    public function setStarttime($starttime): void
     {
         $this->starttime = $starttime;
     }
@@ -700,7 +700,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param integer $endtime endtime
      * @return void
      */
-    public function setEndtime($endtime)
+    public function setEndtime($endtime): void
     {
         $this->endtime = $endtime;
     }
@@ -721,7 +721,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param string $author author
      * @return void
      */
-    public function setAuthor($author)
+    public function setAuthor($author): void
     {
         $this->author = $author;
     }
@@ -742,7 +742,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param integer $doktype the doktype
      * @return void
      */
-    public function setDoktype($doktype)
+    public function setDoktype($doktype): void
     {
         $this->doktype = $doktype;
     }
@@ -763,7 +763,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param integer $l18nCfg
      * @return void
      */
-    public function setL18nConfiguration($l18nCfg)
+    public function setL18nConfiguration($l18nCfg): void
     {
         $this->l18nConfiguration = $l18nCfg;
     }
@@ -784,7 +784,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Persistence\ObjectStorage $categories
      * @return void
      */
-    public function setCategories($categories)
+    public function setCategories($categories): void
     {
         $this->categories = $categories;
     }
@@ -795,7 +795,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
      * @return void
      */
-    public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    public function addCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category): void
     {
         $this->categories->attach($category);
     }
@@ -806,7 +806,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param \TYPO3\CMS\Extbase\Domain\Model\Category $category
      * @return void
      */
-    public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category)
+    public function removeCategory(\TYPO3\CMS\Extbase\Domain\Model\Category $category): void
     {
         $this->categories->detach($category);
     }
@@ -875,7 +875,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param integer $sorting
      * @return void
      */
-    public function setSorting($sorting)
+    public function setSorting($sorting): void
     {
         $this->sorting = $sorting;
     }
@@ -896,7 +896,7 @@ class Page extends \TYPO3\CMS\Extbase\DomainObject\AbstractEntity
      * @param array <Page> $childPages
      * @return void
      */
-    public function setChildPages(array $childPages)
+    public function setChildPages(array $childPages): void
     {
         $this->childPages = $childPages;
     }

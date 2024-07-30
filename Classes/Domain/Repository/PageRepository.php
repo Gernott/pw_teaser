@@ -59,7 +59,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *
      * @return void
      */
-    public function initializeObject()
+    public function initializeObject(): void
     {
         $querySettings = $this->createQuery()->getQuerySettings();
         $querySettings->setRespectStoragePage(false);
@@ -211,9 +211,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                 ->from('pages')
                 ->where('l10n_parent = :pid AND sys_language_uid = :lang')
                 ->setParameter('pid', $pid)
-                ->setParameter('lang', $languageUid)
-                ->setMaxResults(1)
-                ->execute()
+                ->setParameter('lang', $languageUid)->setMaxResults(1)->executeQuery()
                 ->fetchAssociative();
             if ($translatedRow) {
                 $translatedPidList[$pid] = $translatedRow['uid'];
@@ -245,7 +243,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param boolean $isNot If TRUE categories get a logicalNot operator. Otherwise not.
      * @return void
      */
-    public function addCategoryConstraint(array $categories, $isAnd = true, $isNot = false)
+    public function addCategoryConstraint(array $categories, $isAnd = true, $isNot = false): void
     {
         if ($isAnd === true && $isNot === false) {
             $this->queryConstraints[] = $this->query->logicalAnd(...$this->buildCategoryConstraint($categories));
@@ -323,7 +321,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
                     $displayedPages[] = $page;
                 }
             } else {
-                /** @var \TYPO3\CMS\Frontend\Page\PageRepository $pageSelect */
+                /** @var \TYPO3\CMS\Core\Domain\Repository\PageRepository $pageSelect */
                 $pageSelect = $GLOBALS['TSFE']->sys_page;
                 $pageRowWithOverlays = $pageSelect->getPage($page->getUid());
 
@@ -381,7 +379,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param string $orderBy property to order by
      * @return void
      */
-    public function setOrderBy($orderBy)
+    public function setOrderBy($orderBy): void
     {
         if ($orderBy !== 'random') {
             $this->orderBy = $orderBy;
@@ -394,7 +392,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param string $orderDirection the direction to order, may be desc or asc
      * @return void
      */
-    public function setOrderDirection($orderDirection)
+    public function setOrderDirection($orderDirection): void
     {
         if ($orderDirection == 'desc' || $orderDirection == 1) {
             $this->orderDirection = \TYPO3\CMS\Extbase\Persistence\QueryInterface::ORDER_DESCENDING;
@@ -409,7 +407,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param integer $limit The limit of elements to show
      * @return void
      */
-    public function setLimit($limit)
+    public function setLimit($limit): void
     {
         $this->query->setLimit($limit);
     }
@@ -421,7 +419,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      *        Default is FALSE.
      * @return void
      */
-    public function setShowNavHiddenItems($showNavHiddenItems)
+    public function setShowNavHiddenItems($showNavHiddenItems): void
     {
         if ($showNavHiddenItems === true) {
             $this->addQueryConstraint($this->query->in('nav_hide', [0, 1]));
@@ -436,7 +434,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param array $dokTypesToFilterFor doktypes as array, may be empty
      * @return void
      */
-    public function setFilteredDokType(array $dokTypesToFilterFor)
+    public function setFilteredDokType(array $dokTypesToFilterFor): void
     {
         if (count($dokTypesToFilterFor) > 0) {
             $this->addQueryConstraint($this->query->in('doktype', $dokTypesToFilterFor));
@@ -449,7 +447,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
      * @param integer $currentPageUid Uid to ignore
      * @return void
      */
-    public function setIgnoreOfUid($currentPageUid)
+    public function setIgnoreOfUid($currentPageUid): void
     {
         $this->addQueryConstraint($this->query->logicalNot($this->query->equals('uid', $currentPageUid)));
         $this->addQueryConstraint($this->query->logicalNot($this->query->equals('l10n_parent', $currentPageUid)));

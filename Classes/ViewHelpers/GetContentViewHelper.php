@@ -24,7 +24,7 @@ class GetContentViewHelper extends \TYPO3Fluid\Fluid\Core\ViewHelper\AbstractVie
     /**
      * @return void
      */
-    public function initializeArguments()
+    public function initializeArguments(): void
     {
         parent::initializeArguments();
         $this->registerArgument('contents', 'array', 'Content elements');

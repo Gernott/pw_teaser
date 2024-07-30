@@ -95,7 +95,7 @@ class Content extends AbstractEntity
      * @param ObjectStorage $image
      * @return void
      */
-    public function setImage(ObjectStorage $image)
+    public function setImage(ObjectStorage $image): void
     {
         $this->image = $image;
     }
@@ -116,7 +116,7 @@ class Content extends AbstractEntity
      * @param FileReference $image
      * @return void
      */
-    public function addImage(FileReference $image)
+    public function addImage(FileReference $image): void
     {
         $this->image->attach($image);
     }
@@ -127,7 +127,7 @@ class Content extends AbstractEntity
      * @param FileReference $image
      * @return void
      */
-    public function removeImage(FileReference $image)
+    public function removeImage(FileReference $image): void
     {
         $this->image->detach($image);
     }
@@ -153,7 +153,7 @@ class Content extends AbstractEntity
      * @param ObjectStorage $assets
      * @return void
      */
-    public function setAssets(ObjectStorage $assets)
+    public function setAssets(ObjectStorage $assets): void
     {
         $this->assets = $assets;
     }
@@ -174,7 +174,7 @@ class Content extends AbstractEntity
      * @param FileReference $assets
      * @return void
      */
-    public function addAssets(FileReference $assets)
+    public function addAssets(FileReference $assets): void
     {
         $this->assets->attach($assets);
     }
@@ -185,7 +185,7 @@ class Content extends AbstractEntity
      * @param FileReference $assets
      * @return void
      */
-    public function removeAssets(FileReference $assets)
+    public function removeAssets(FileReference $assets): void
     {
         $this->assets->detach($assets);
     }
@@ -211,7 +211,7 @@ class Content extends AbstractEntity
      * @param string $bodytext bodytext
      * @return void
      */
-    public function setBodytext($bodytext)
+    public function setBodytext($bodytext): void
     {
         $this->bodytext = $bodytext;
     }
@@ -232,7 +232,7 @@ class Content extends AbstractEntity
      * @param string $ctype ctype
      * @return void
      */
-    public function setCtype($ctype)
+    public function setCtype($ctype): void
     {
         $this->ctype = $ctype;
     }
@@ -253,7 +253,7 @@ class Content extends AbstractEntity
      * @param integer $colPos colPos
      * @return void
      */
-    public function setColPos($colPos)
+    public function setColPos($colPos): void
     {
         $this->colPos = $colPos;
     }
@@ -274,7 +274,7 @@ class Content extends AbstractEntity
      * @param string $header header
      * @return void
      */
-    public function setHeader($header)
+    public function setHeader($header): void
     {
         $this->header = $header;
     }
@@ -305,7 +305,7 @@ class Content extends AbstractEntity
      * @param ObjectStorage $categories
      * @return void
      */
-    public function setCategories($categories)
+    public function setCategories($categories): void
     {
         $this->categories = $categories;
     }
@@ -316,7 +316,7 @@ class Content extends AbstractEntity
      * @param Category $category
      * @return void
      */
-    public function addCategory(Category $category)
+    public function addCategory(Category $category): void
     {
         $this->categories->attach($category);
     }
@@ -327,7 +327,7 @@ class Content extends AbstractEntity
      * @param Category $category
      * @return void
      */
-    public function removeCategory(Category $category)
+    public function removeCategory(Category $category): void
     {
         $this->categories->detach($category);
     }

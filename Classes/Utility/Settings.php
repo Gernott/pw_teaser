@@ -38,7 +38,7 @@ class Settings
      *
      * @return void
      */
-    public function initializeObject()
+    public function initializeObject(): void
     {
         $this->contentObject = $this->configurationManager->getContentObject();
     }
