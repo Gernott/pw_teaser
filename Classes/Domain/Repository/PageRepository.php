@@ -163,7 +163,7 @@ class PageRepository extends \TYPO3\CMS\Extbase\Persistence\Repository
             return [];
         }
 
-        $this->addQueryConstraint($this->query->in('pid', $this->translatePids($pagePids)));
+        $this->addQueryConstraint($this->query->in('pid', $pagePids));
         return $this->executeQuery();
     }
 
